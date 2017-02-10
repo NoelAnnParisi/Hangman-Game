@@ -1,10 +1,14 @@
-var options = ["nickelodeon", "baywatch", "friends"];
+var options = ["nickelodeon", "baywatch", "friends","goosebumps", "fullhouse", "rugrats"];
 var wins = 0;
-var currentWord;
 var currentWordArr;
 var alreadyguessed = [];
 var correctlyGuessed = [];
 var guessesremaining = 13;
+var computerChoose = function() {
+		return options[Math.floor(Math.random() * options.length)];
+	}
+var currentWord = computerChoose();
+var currentWordArr = currentWord.split("")
 
 	document.onkeyup = function(event) {
 
@@ -12,13 +16,6 @@ var guessesremaining = 13;
 		console.log("You chose "+ userGuess); 
 		alreadyguessed.push(userGuess);
 		console.log(alreadyguessed);
-
-		var computerChoose = function() {
-			return options[Math.floor(Math.random() * options.length)];
-		}
-
-		currentWord = computerChoose();
-		currentWordArr = currentWord.split("")
 
 		console.log(currentWordArr);
 
