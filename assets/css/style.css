@@ -1,0 +1,29 @@
+body {
+	background-image: url("../images/background.jpeg");
+}
+
+h1 {
+	color: aquamarine;
+    font-size: 10em;
+    font-family: 'Permanent Marker', cursive;
+
+}
+
+h2 {
+	color:limegreen;
+	font-size: 4em;
+	font-family: 'Bangers', cursive;
+}
+
+header {
+	margin-right: 12%;
+    margin-left: 12%;
+    margin-top: 7%;
+    margin-bottom: 7%;
+    width: auto;
+    text-align: center;
+}
+
+.backgroundcolor {
+	background-color: black;
+}
