@@ -1,5 +1,5 @@
 body {
-	background-image: url("../images/background.jpeg");
+	background-image: url("../images/newback.jpg");
 }
 
 h1 {
@@ -31,7 +31,7 @@ header {
     margin-left: 12%;
     margin-top: 7%;
     margin-bottom: 7%;
-    width: auto;
+    width: 100%;
     text-align: center;
 }
 
@@ -40,16 +40,15 @@ header {
 }
 
 .container {
-	width:auto;
-	height:100%;
-	margin-left: 12%;
-	margin-right: 12%;
-	border: 1px solid aquamarine;
+	display: inline-flex;
+    width: 100%;
+    height: auto;
+    margin-left: 12%;
+    margin-right: 12%;
 }
 
 .gameContainer1 {
-    display: inline-block;
-    background-color: white;
+    background-color: limegreen;
     font-family: 'Bangers', cursive;
     font-size: 4em;
     text-align: center;
@@ -58,7 +57,6 @@ header {
 }
 
 .gameContainer2 {
-    display: inline-block;
     background-color: aquamarine;
     font-family: 'Bangers', cursive;
     float: right;
