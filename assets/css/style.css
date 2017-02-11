@@ -1,3 +1,9 @@
+html, body {
+	min-height: 100vh;
+	min-width:100vw;
+}
+
+
 body {
 	background-image: url("../images/newback.jpg");
 }
@@ -45,6 +51,8 @@ header {
     height: auto;
     margin-left: 12%;
     margin-right: 12%;
+    border-width: 7px;
+    border-style: dashed;
 }
 
 .gameContainer1 {
