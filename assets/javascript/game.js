@@ -19,16 +19,24 @@ console.log(currentWordArr);
 		console.log("You chose "+ userGuess); 
 
 		//trying to find out a way to get duplicated letters indices
-		//should the 1 in my splice be 0?
-  		for(i = 0; i < currentWordArr.length; i++){
-  			if (currentWordArr[i] === letter){
-  				correctlyGuessed.splice(currentWordArr.indexOf(letter), 1, letter);
-				console.log(correctlyGuessed);
-  			}
+		//should the 1 in my splice be 0
+	  		for(i = 0; i < currentWordArr.length;i++){
+	  			if (letter === currentWordArr[i]){
+	  				correctlyGuessed.splice(currentWordArr.indexOf(letter, [i]), 1, letter);
+					console.log(correctlyGuessed);
+	  			}
+	  		}
 
+
+	  	//how will I get a repeated letter not to count? 
+  		if userGuess === letter {
+  			alreadyguessed.push(letter);
+	  		console.log(alreadyguessed);
   		}
 
-  		alreadyguessed.push(letter);
+  		//Think about how to tally up the wins and already guessed letters
+  		//How to get all of this to display on my html page 
+	  		
 
   	}
 //create an array to contain the guessed letter
