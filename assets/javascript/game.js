@@ -21,18 +21,26 @@ console.log(currentWordArr);
 		console.log(letter);
 		console.log("You chose "+ letter); 
 
+		var guessesLeft = function guessesLeft(guessesremaining) {
+	  		htmlReplacer("#guessesremaining", guessesremaining);
+	  	};
+
 		var guessedLetters = function guessedLetters(letter, alreadyguessed) {
 			if (alreadyguessed.length === 0 && !currentWordArr.includes(letter)) {
 				alreadyguessed.push(letter);
 				htmlReplacer("#alreadyguessed", alreadyguessed);
+				guessesremaining -= 1;
 			}
+			guessesLeft(guessesremaining);
 		};
 			
 		var guessedLettersrepeat = function guessedLettersrepeat (letter, alreadyguessed) {
 			if (alreadyguessed.length >= 1 && !alreadyguessed.includes(letter) && !currentWordArr.includes(letter)) {
 				alreadyguessed.push(letter);
 				htmlReplacer("#alreadyguessed", alreadyguessed);
+				guessesremaining -= 1;
 			}
+			guessesLeft(guessesremaining);
 		};
 			
 	  	var displayWord = function displayWord(currentWordArr, correctlyGuessed) {
@@ -44,9 +52,17 @@ console.log(currentWordArr);
 	  		}
 	  	};
 
-	  	// inCorrectWord(letter, currentWordArr, alreadyguessed);
+	  	var winStats = function winStats(currentWordArr, correctlyGuessed, wins) {
+	  		if (currentWordArr === correctlyGuessed) {
+	  			wins += 1;
+	  			htmlReplacer("#wins", wins);
+	  		}
+	  	};
+
+	  	guessesLeft(guessesremaining); 
 	  	guessedLetters(letter, alreadyguessed);
 	  	guessedLettersrepeat(letter, alreadyguessed);
-	  	displayWord(currentWordArr, correctlyGuessed); 
-	}
+	  	displayWord(currentWordArr, correctlyGuessed);
+	  	winStats(currentWordArr, correctlyGuessed, wins);
+	};
 
