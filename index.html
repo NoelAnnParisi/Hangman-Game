@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<title>Hangman 90's edition</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel ="stylesheet" type="text/css" href="assets/css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Bangers|Permanent+Marker" rel="stylesheet">
-	<script type="text/javascript" src="assets/javascript/game.js"></script>
+    <meta charset="utf-8">
+    <title>Hangman 90's edition</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Permanent+Marker" rel="stylesheet">
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
 </head>
 
 <body id="game">
-	<header class='backgroundcolor'>
-		<h1>Hangman </h1>
-		<h2>90's Television Edition</h2>
-	</header>
-
-
-	<div class="container">
-		<div class="gameContainer1">
-			<!-- will want to pick another image -->
-			<img src="assets/images/vintagetv.jpg">
-		</div>
-		<div class="gameContainer2">
-			<p>Press any key to start!</p>
-			<br>
-			<p class="smallertext">WINS</p>
-			<p class="smallertext" id="wins"></p>
-			<br>
-			<p class="smallertext">Current Word... </p>
-			<p class="smallertext" id="correctlyGuessed"></p>
-			<br>
-			<p class="smallertext">Letters already guessed</p>
-			<p class="smallertext" id="alreadyguessed"></p>
-			<br>
-			<p class="smallertext">Guesses Remaining</p>
-			<p class="smallertext" id="guessesremaining">13</p>
-		</div>
-	</div>
-
-
+    <header class='backgroundcolor'>
+        <h1>Hangman </h1>
+        <h2>90's Television Edition</h2>
+    </header>
+    <div class="container">
+        <div class="gameContainer1" id ="tvImage">
+            <!-- will want to pick another image -->
+            <img src="assets/images/vintagetv.jpg" alt="retroTv">
+        </div>
+        <div class="gameContainer2">
+            <p id="playAgain">Press Enter to start!</p>
+            <p id ="restart"></p>
+            <br>
+            <p class="smallertext">WINS</p>
+            <p class="smallertext" id="wins"></p>
+            <br>
+            <p class="smallertext">Current Word... </p>
+            <p class="smallertext" id="correctlyGuessed"></p>
+            <br>
+            <p class="smallertext">Letters already guessed</p>
+            <p class="smallertext" id="alreadyguessed"></p>
+            <br>
+            <p class="smallertext">Guesses Remaining</p>
+            <p class="smallertext" id="guessesremaining">13</p>
+        </div>
+    </div>
 </body>
+
 </html>
