@@ -10,14 +10,14 @@ body {
 
 h1 {
 	color: aquamarine;
-    font-size: 6em;
+    font-size: 10vw;
     font-family: 'Permanent Marker', cursive;
 
 }
 
 h2 {
 	color:limegreen;
-	font-size: 2em;
+	font-size: 5vw;
 	font-family: 'Bangers', cursive;
 }
 
@@ -27,7 +27,7 @@ img {
 }
 
 .smallertext {
-	font-size:smaller;
+	font-size:5vw;
 }
 
 #restart {
