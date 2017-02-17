@@ -7,6 +7,7 @@ var computerChoose = function() {
     correctlyGuessed.length = currentWordArr.length;
     console.log(currentWordArr);
     console.log("computerChoose: " + stateOfGame); 
+    htmlReplacer("#restart", " ")
 };
 
 var htmlReplacer = function htmlReplacer(id, html) {
@@ -63,7 +64,8 @@ var winStats = function winStats() {
         wins += 1;
         stateOfGame = false;
         htmlReplacer("#wins", wins);
-        htmlReplacer("#playAgain", "To play again please press the enter key!");
+        htmlReplacer("#playAgain", "Radical, you did it!")
+        htmlReplacer("#restart", "To play again please press the enter key!");
 
 	    if (winningWord === "rugrats") {
 			htmlReplacer("#tvImage", "<img src=assets/images/rugrats.jpg>");
