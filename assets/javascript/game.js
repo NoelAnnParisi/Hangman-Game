@@ -40,7 +40,8 @@ var guessedLetters = function guessedLetters() {
 
 	}
 
-}
+};
+
 
 var displayWord = function displayWord() {
 	console.log("displayWord: " + stateOfGame);
@@ -51,6 +52,7 @@ var displayWord = function displayWord() {
         }
     }
 };
+
 
 var winStats = function winStats() {
 	console.log("winStats: " + stateOfGame);
@@ -151,6 +153,12 @@ document.onkeyup = function(event) {
     	alert("Please enter a letter");
 
     	return;
+
+    }
+
+    if (guessesremaining === 0 && stateOfGame === true) {
+
+    	alert("GAME OVER! GOODBYE!");
 
     }
 

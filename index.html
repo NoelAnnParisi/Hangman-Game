@@ -6,7 +6,8 @@
     <title>Hangman 90's edition</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 </head>
 
@@ -17,17 +18,17 @@
     </header>
     <div class="container">
         <div class="gameContainer1" id ="tvImage">
-            <!-- will want to pick another image -->
             <img src="assets/images/vintagetv.jpg" alt="retroTv">
         </div>
         <div class="gameContainer2">
-            <p id="playAgain">Press Enter to start!</p>
+            <p id="playAgain">Start Guessing! Type any letter!</p>
             <p id ="restart"></p>
             <br>
             <p class="smallertext">WINS</p>
             <p class="smallertext" id="wins"></p>
             <br>
             <p class="smallertext">Current Word... </p>
+            <p class="smallertext" id="tickMarks"></p>
             <p class="smallertext" id="correctlyGuessed"></p>
             <br>
             <p class="smallertext">Letters already guessed</p>
