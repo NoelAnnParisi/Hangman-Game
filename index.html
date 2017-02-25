@@ -8,10 +8,10 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
+
 </head>
 
-<body id="game">
+<body onload="blankSpaces()">
     <header class='backgroundcolor'>
         <h1>Hangman </h1>
         <h2>90's Television Edition</h2>
@@ -22,7 +22,7 @@
         </div>
         <div class="gameContainer2">
             <p class="smallertext" id="playAgain">Start Guessing! Type any letter!</p>
-            <p class="smallertext" id ="restart"></p>
+            <div class="smallertext" id ="restart"></div>
             <br>
             <p class="smallertext">WINS</p>
             <p class="smallertext" id="wins"></p>
@@ -34,9 +34,18 @@
             <p class="smallertext" id="alreadyguessed"></p>
             <br>
             <p class="smallertext">Guesses Remaining</p>
-            <p class="smallertext" id="guessesremaining">13</p>
+            <p class="smallertext" id="guessesremaining">11</p>
+            <div id="playMore"></div>
         </div>
     </div>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="assets/javascript/game.js"></script>
+
 </body>
 
 </html>

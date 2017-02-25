@@ -1,167 +1,171 @@
-var options = ["nickelodeon", "seinfeld", "mtv","baywatch", "friends", "goosebumps", "fullhouse", "rugrats"];
-var letter, winningWord, correctWord, wins = 0, alreadyguessed = [], correctlyGuessed = [], guessesremaining = 13, currentWord, currentWordArr, stateOfGame = false;
+var gameWords = ["nickelodeon", "seinfeld", "mtv","baywatch", "friends", "goosebumps", "fullhouse", "rugrats"];
+var randomWord = gameWords[Math.floor(Math.random()*(gameWords.length))];
+var winningWordArr = randomWord.split("");
+var selectedWord = randomWord.split("");
+var guessedLetters = [];
+var userGuess = "";
+var joinedWord;
+var joinedGuessedLetters;
+var numberOfGuesses = 11;
+var wins = 0;
+var lose = 0;
 
-var computerChoose = function() {
-    currentWord = options[Math.floor(Math.random() * options.length)];
-    currentWordArr = currentWord.split('');
-    correctlyGuessed.length = currentWordArr.length;
-    console.log(currentWordArr);
-    console.log("computerChoose: " + stateOfGame); 
-    htmlReplacer("#restart", " ")
-};
+document.onkeyup = function(event){
+    userGuess = event.key;
+    console.log(userGuess);
+    compareLetters();
+    winOrLose();
+}
 
 var htmlReplacer = function htmlReplacer(id, html) {
     document.querySelector(id).innerHTML = html;
-    console.log("htmlReplacer: " + stateOfGame);
 };
 
-var guessesLeft = function guessesLeft() {
-    htmlReplacer("#guessesremaining", guessesremaining);
-    console.log("guessesLeft: " + stateOfGame);
-};
+var blankSpaces = function blankSpaces() {
 
-var placeholder = function placeholder() {
-       //Create an empty string var that we can add into, similar to lettersGuessed
-       currentState = '';
-       for (var i = 0; i < wordLength; i++) {
-       currentState += '-';
-       }
-       return currentState;
-       }
+    for(let i = 0; i < winningWordArr.length; i ++) {
 
-var guessedLetters = function guessedLetters() {
-
-	if (!alreadyguessed.includes(letter.key) && !currentWordArr.includes(letter.key)) {
-
-		alreadyguessed.push(letter.key); 
-
-		htmlReplacer('#alreadyguessed', alreadyguessed); 
-
-		guessesremaining--;
-
-	}
-
-};
-
-
-var displayWord = function displayWord() {
-	console.log("displayWord: " + stateOfGame);
-    for (let i = 0; i < currentWordArr.length; i++) {
-        if (letter.key === currentWordArr[i]) {
-            correctlyGuessed.splice(currentWordArr.indexOf(letter.key, [i]), 1, letter.key);
-            htmlReplacer("#correctlyGuessed", correctlyGuessed);
-        }
+        winningWordArr[i] = " _ ";
+        htmlReplacer("#correctlyGuessed", winningWordArr.join(''));
     }
-};
 
+    console.log(winningWordArr);
+    console.log(selectedWord);
+}
 
-var winStats = function winStats() {
-	console.log("winStats: " + stateOfGame);
-	console.log(currentWordArr); 
-    winningWord = currentWordArr.join('');
-    correctWord = correctlyGuessed.join('');
-    if (winningWord === correctWord) {
-        wins += 1;
-        stateOfGame = false;
+var compareLetters = function compareLetters() {
+
+    joinedWord = selectedWord.join("");
+    joinedGuessedLetters = guessedLetters.join("");
+
+    if (!joinedWord.includes(userGuess) && !joinedGuessedLetters.includes(userGuess)){
+
+        guessedLetters.push(userGuess);
+        htmlReplacer('#alreadyguessed', guessedLetters);
+
+        numberOfGuesses --;
+        htmlReplacer('#guessesremaining', numberOfGuesses);
+
+        return;
+
+    } else {
+
+        for(let i = 0; i < selectedWord.length; i ++) {
+            
+            if (userGuess === selectedWord[i]) {
+
+                winningWordArr[i] = userGuess;
+                htmlReplacer("#correctlyGuessed", winningWordArr.join(''));
+
+            }  
+        }   
+        
+    }
+}
+
+var winOrLose = function winOrLose() {
+
+    if (joinedWord === winningWordArr.join("")){
+
+        changeImage();
+        wins ++;
         htmlReplacer("#wins", wins);
-        htmlReplacer("#playAgain", "Radical, you did it!")
-        htmlReplacer("#restart", "To play again please press the enter key!");
+        htmlReplacer("#playAgain", "Radical, you did it!");  
+        htmlReplacer("#restart","<button type='button'>Restart?</button>");
+    };
 
-	    if (winningWord === "rugrats") {
-			htmlReplacer("#tvImage", "<img src=assets/images/rugrats.jpg>");
-			console.log("this is working?");
-		}
-		if (winningWord === "fullhouse") {
-			htmlReplacer("#tvImage", "<img src=assets/images/fullhouse.jpg>");
-			console.log("this is working?");
-		}
+    if (numberOfGuesses === 0) {
 
-		if (winningWord === "goosebumps") {
-			htmlReplacer("#tvImage", "<img src=assets/images/goosebumps.jpg>");
-			console.log("this is working?");
-		}
-
-		if (winningWord === "baywatch") {
-			htmlReplacer("#tvImage", "<img src=assets/images/baywatch.jpg>");
-			console.log("this is working?");
-		}
-
-		if (winningWord === "friends") {
-			htmlReplacer("#tvImage", "<img src=assets/images/friends.jpg>")
-		}
-
-		if (winningWord === "nickelodeon") {
-			htmlReplacer("#tvImage", "<img src=assets/images/nickelodeon.png>")
-		}
-
-		if (winningWord === "seinfeld") {
-			htmlReplacer("#tvImage", "<img src=assets/images/seinfeld.jpg>")
-		}
-
-		if (winningWord === "mtv") {
-			htmlReplacer("#tvImage", "<img src=assets/images/mtv.jpg>")
-		}
-    }
-};
-
-
-/////////////////////////////////////////////////////////////////////////
-
-document.onkeyup = function(event) {
-
-	console.log('keyup'); 
-
-	letter = event;
-	console.log(letter.key);
-    console.log("You chose " + letter.key);
-
-    // if the key isn't a letter
-    if (letter.key === 'Enter' && !stateOfGame && winningWord === correctWord) {
-
-    	console.log(currentWordArr);
-    	currentWordArr = [];
-    	correctlyGuessed = [];
-    	alreadyguessed = [];
-    	guessesremaining = 13;
-    	htmlReplacer('#correctlyGuessed', correctlyGuessed);
-    	htmlReplacer('#alreadyguessed', alreadyguessed);
-    	htmlReplacer('#guessesremaining', guessesremaining);
-    	htmlReplacer('#tvImage', "<img src=assets/images/vintagetv.jpg>");
-
-    	computerChoose();
-    	stateOfGame = true;
-    } 
-
-    else if (letter.keyCode >= 65 && letter.keyCode <= 90) {
-
-    	if (!stateOfGame) {
-
-    		computerChoose();
-    		stateOfGame = true;
-
-    	}
-
-    	// shows correctly guessed letters
-    	displayWord();
-    	//if winningWord === correctWord  - wins++ 
-	    winStats();
-    	//adds guessed letters to array & decreases guesses
-	    guessedLetters(); 
-    	//calculates guesses remain 
-		guessesLeft();
-
-    } else if (!letter.keyCode >= 65 && letter.keyCode <= 90) {
-
-    	alert("Please enter a letter");
-
-    	return;
+        htmlReplacer("#guessesremaining", "All of your guesses are gone! Do you want to play again?");
+        htmlReplacer("#playMore","<button type='button'>Play Again?</button>");
 
     }
+}
 
-    if (guessesremaining === 0 && stateOfGame === true) {
+var changeImage = function changeImage () {
 
-    	alert("GAME OVER! GOODBYE!");
+    console.log("is this running?")
 
+    if (joinedWord === "rugrats") {
+        htmlReplacer("#tvImage", "<img src=assets/images/rugrats.jpg>");
+        console.log("this is working?");
+        htmlReplacer()
     }
 
-};
+    if (joinedWord === "fullhouse") {
+         htmlReplacer("#tvImage", "<img src=assets/images/fullhouse.jpg>");
+         console.log("this is working?");
+    }
+
+    if (joinedWord === "goosebumps") {
+         htmlReplacer("#tvImage", "<img src=assets/images/goosebumps.jpg>");
+         console.log("this is working?");
+    }
+
+     if (joinedWord === "baywatch") {
+         htmlReplacer("#tvImage", "<img src=assets/images/baywatch.jpg>");
+         console.log("this is working?");
+    }
+
+     if (joinedWord === "friends") {
+         htmlReplacer("#tvImage", "<img src=assets/images/friends.jpg>")
+    }
+
+     if (joinedWord === "nickelodeon") {
+         htmlReplacer("#tvImage", "<img src=assets/images/nickelodeon.png>")
+    }
+
+     if (joinedWord === "seinfeld") {
+         htmlReplacer("#tvImage", "<img src=assets/images/seinfeld.jpg>")
+    }
+
+     if (joinedWord === "mtv") {
+         htmlReplacer("#tvImage", "<img src=assets/images/mtv.jpg>")
+    }
+}
+
+$("#restart").on("click", function(){
+
+    restartGame();
+
+});
+
+$("#playMore").on("click", function(){
+
+    var gameWords = ["nickelodeon", "seinfeld", "mtv","baywatch", "friends", "goosebumps", "fullhouse", "rugrats"];
+    randomWord = gameWords[Math.floor(Math.random()*(gameWords.length))];
+    winningWordArr = randomWord.split("");
+    selectedWord = randomWord.split("");
+    $('#alreadyguessed').empty();
+    $('#guessesremaining').empty();
+    $('#playMore').empty();
+    guessedLetters = [];
+    userGuess = "";
+    joinedWord;
+    joinedGuessedLetters;
+    blankSpaces();
+    compareLetters();
+    wins = 0;
+    lose = 0;
+    numberOfGuesses = 11;
+    htmlReplacer('#guessesremaining', numberOfGuesses);
+
+
+
+})
+
+var restartGame = function restartGame() {
+
+    var gameWords = ["nickelodeon", "seinfeld", "mtv","baywatch", "friends", "goosebumps", "fullhouse", "rugrats"];
+    randomWord = gameWords[Math.floor(Math.random()*(gameWords.length))];
+    winningWordArr = randomWord.split("");
+    selectedWord = randomWord.split("");
+    $('#alreadyguessed').empty();
+    guessedLetters = [];
+    userGuess = "";
+    joinedWord;
+    joinedGuessedLetters;
+    blankSpaces();
+    compareLetters();
+}
+
